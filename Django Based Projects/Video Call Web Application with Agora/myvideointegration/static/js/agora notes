@@ -1,0 +1,113 @@
+// Documentation: https://docs.agora.io/en/api-reference?platform=web (video call api)
+
+createClient()
+
+AgoraRTC is what we use to access all the functions associated with the SDK.
+createClient() creates a local client object
+This will prepare the client to interact with the Agora servers and services. 
+Through parameters passed to the createClient() function, developers can specify various configurations for the client object, such as authentication credentials, connection settings, and audio/video settings. This allows for customization based on the specific requirements of the application.
+Once created, the client object typically serves as the primary interface for interacting with Agora's services. It provides methods for starting and stopping communication sessions, joining or leaving channels, and sending or receiving audio/video streams. Additionally, it often exposes event handlers or callbacks that allow developers to respond to various events that occur during the communication session, such as when a user joins a channel or when network conditions change.
+
+let localTracks = []
+This variable represents an array that will be used to strore the user's video and audio tracks (from their devices) 
+
+These tracks represent the user's audio and video input, which can be transmitted to other participants in a communication session.
+
+By storing these tracks in an array, developers can manage and manipulate them more easily within their application code. For example, they might add or remove tracks dynamically based on user actions (e.g., muting/unmuting audio or stopping/starting video), or they might iterate over the array to perform operations on each track (e.g., adjusting audio volume or applying video filters).
+
+
+
+
+let remoteUsers = {}
+
+
+Remote users typically refer to users who are participating in a communication session (such as a video call or a live broadcast) but are not physically present in the same location as the local user. In the context of video communication applications like those built using Agora's platform, remote users are individuals who are accessing the same communication channel or session from their own devices, such as smartphones, tablets, or computers.
+
+When a user joins a communication session, they become a participant in that session, whether they are local or remote. Remote users can interact with each other and with the local user through audio and video streams, chat messages, or other communication features provided by the application.
+
+
+
+
+
+
+
+let joinAndDisplayLocalStream = async () => {
+    UID = await client.join(APP_ID, CHANNEL, TOKEN, null) //This allows the user to join a channel
+    localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()  //This is going to take the user's video and audio track
+}
+
+
+UID = await client.join(APP_ID, CHANNEL, TOKEN, null) 
+This allows users to join a channel. 
+
+localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
+This collects the user's audio and video tracks 
+
+
+
+
+
+
+    let player = `<div class="video-container" id="user-container-${UID}">              
+                    <div class="username-wrapper"><span id="user-name">My name</span></div>
+                    <div class = "video-player" id="user-${UID}"></div>
+                </div>` 
+
+This is going to represent each individual user in the stream with a unique identifire----once it has been appended with the code bellow, we will be able to see the user's video
+
+
+
+
+    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+
+This line of code appends the modified html section with the html section that is associated with the id for video-streams
+
+
+
+    await client.publish(localTracks[0], localTracks[1])
+This line bellow will allow us to let other members of that call to access the video and audio track
+
+
+55 (explains how the code runs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    let form = document.getElementById('form') //retrieves the data from html tag with the "form" id
+
+    let handleSubmit = async () => {
+        e.preventDefault()
+        
+        window.open('/room', '_self') // redirects the user to a different window without opening a new tab
+    }
+
+    form.addEventListener('submit', handleSubmit) //waits for the submit button to be pressed so as to execute the handle submit function
+</script>
+The code above is Javascript from the lobby template. Its meant to redirect the user to a different page. 
+
+
+
+Adding remote users to the call involves configuring the application so that other members and clients will be able to join the chat and communicate with you; you will therefore be able to hear and see their audiotrack effectively. 
+
+
+When a new user joins the stream, they are going to call joinAndDisplayLocalStream method that was created in the streams.js file
+
+In that method, we call the join method wich first joins a channel. 
+
+After that, we call the client.publish method which takes the usr's audio and video track
+
+The client.on() method is resposible for allowing the other memebers of the stream to hear the new user's messages. 

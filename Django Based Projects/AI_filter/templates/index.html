@@ -1,0 +1,293 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <title>Clean Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="{% url 'index' %}" class="text-white font-bold">Start Bootstrap</a>
+                </div>
+                <div class="block md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="hidden md:block">
+                    <ul class="flex space-x-4">
+                        <li><a href="{% url 'index' %}" class="text-gray-300 hover:text-white" style="padding: 0.5rem;">Home</a></li>
+                        <li><a href="{% url 'about' %}" class="text-gray-300 hover:text-white" style="padding: 0.5rem;">About</a></li>
+                        <li><a href="post.html" class="text-gray-300 hover:text-white" style="padding: 0.5rem;">Sample Post</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-gray-300 hover:text-white" style="padding: 0.5rem;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+        
+            <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    {% for item in decorator %}
+        <header class="intro-header" style="background-image: url( '{{ item.burner_image.url }}' )"> <!--url('{% static 'img/home-bg.jpg' %}')-->
+    {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        
+                        {% for item in decorator %}
+                            <h2> {{ item.title }} </h2>
+                        {% endfor %}
+
+                        <hr class="small">
+                        {% for item in decorator %}
+                            <span class="subheading"> {{ item.description }} </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">        
+                <br>
+                <!--Generate content from database for this block-->
+                {% for message in messages %}
+                    <p>
+                        <i> {{message}} </i>
+                    </p>
+                <hr><br><br>    
+                {% endfor %}
+                
+                <!--Submitting file for processing: https://www.codeproject.com/Questions/5318303/How-to-get-id-not-name-of-a-radio-button-via-POST -->
+                <hr>
+                <br><br>
+                <div class="max-w-4xl mx-auto">
+
+
+                    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{% url 'index' %}">
+                        {% csrf_token %}
+
+                        <div class="mb-6">
+                            <label for="base-input" class="block text-gray-700 text-xl font-bold mb-2">
+                                <h3>Provide a title</h3>
+                            </label>
+                            <input type="text" name="title" id="base-input" class="block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded py-2 px-4 mb-3 focus:outline-none focus:bg-white focus:border-blue-500">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="large-input" class="block text-gray-700 text-xl font-bold mb-2">
+                                <h3>Type or paste your content here</h3>
+                            </label>
+                            <textarea id="large-input" name="content" class="block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded py-2 px-4 mb-3 resize-none focus:outline-none focus:bg-white focus:border-blue-500" rows="6"></textarea>
+                        </div>
+                
+                        <!--Collecting complexity level-->
+                        <h2>Please pick the level of complexity you'd want to use</h2>
+                        <div class="mb-6">
+                            <input id="HighSchool" type="radio" value="HighSchool" name="complexity_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="HighSchool" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">High School</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="University" type="radio" value="University" name="complexity_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="University" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">University</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="Doctorate" type="radio" value="Doctorate" name="complexity_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="Doctorate" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Doctorate</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="Journalist" type="radio" value="Journalist" name="complexity_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="Journalist" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Journalist</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="Marketing" type="radio" value="Marketing" name="complexity_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="Marketing" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Marketing</label>
+                        </div>
+
+                        <hr><br>
+
+                        <h2>What's the purpose of the article? Select an option bellow</h2>
+
+                        <!--Intended Purpose-->
+                        <div class="mb-6">
+                            <input id="GeneralWriting" type="radio" value="GeneralWriting" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="GeneralWriting" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">General Writing</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="Essay" type="radio" value="Essay" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="Essay" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Essay</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="Article" type="radio" value="Article" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="Article" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Article</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="MarketingMaterial" type="radio" value="MarketingMaterial" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="MarketingMaterial" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Marketing Material</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="Story" type="radio" value="Story" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="Story" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Story</label>
+                        </div>
+                        <div class="mb-6">
+                            <input id="CoverLetter" type="radio" value="CoverLetter" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="CoverLetter" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Cover Letter</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="Report" type="radio" value="Report" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="Report" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Report</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="BusinessMaterial" type="radio" value="BusinessMaterial" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="BusinessMaterial" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Business Material</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <input checked id="LegalMaterial" type="radio" value="LegalMaterial" name="purpose_user_input" class="w-4 h-4 text-blue-600 bg-gray-200 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="LegalMaterial" class="inline-block ml-2 text-xl font-medium text-gray-700 dark:text-gray-300">Legal Material</label>
+                        </div>
+
+                        <button class="bg-transparent hover:bg-blue-500 text-black-700 font-semibold hover:text-white py-2 px-4 border border-black-500 hover:border-transparent rounded">
+                            Humanize the content
+                        </button>
+
+                        
+                    </form>
+                </div>
+                
+                                
+                
+                <br>
+                <br>
+                <hr>
+  
+                {% for post in H_post.reversed %}
+
+                <div class="post-preview">
+                    <a href="{% url 'post' post.id %}">
+                        <h2 class="post-title">
+                            {{ post.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ post.content|truncatewords:7 }}
+                        </h3>
+                    </a>
+                    <p class="post-meta"> 
+                        {{ post.posted_by }} 
+                        {{ post.date }}
+
+                        {% if user.is_authenticated %}
+                            <a href="#">Modify Content?</a>
+                        {% endif %}
+                    </p>
+                </div>
+                <hr>
+
+                {% endfor %}
+                
+                
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/clean-blog.min.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Application</title>
+    <link rel="stylesheet" href="{% static 'css/calenda_style.css' %}">
+</head>
+<body>
+    <div id="calendar"></div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="{% static 'js/calenda.js' %}"></script>
+</body>
+</html>
+
+<!--
+
+    {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Application</title>
+    <link rel="stylesheet" href="{% static 'css/calenda_style.css' %}">
+</head>
+<body>
+    <div id="calendar"></div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="{% static 'js/calenda.js' %}"></script>
+    <script>
+        !function() {
+            var myData = [
+                { eventName: 'Your Event 1', calendar: 'Your Calendar 1', color: 'orange' },
+                { eventName: 'Your Event 2', calendar: 'Your Calendar 2', color: 'blue' },
+                // Add more events as needed
+            ];
+
+            var calendar = new Calendar('#calendar', myData);
+        }();
+    </script>
+</body>
+</html>
+
+
+If you remove the piece of code that defines the data array, then the calendar will not have any events to display. The events defined in the data array are what populate the calendar with event information.
+
+Without this data, the calendar will still be displayed, but it will be empty without any events shown on it. If you want to display events on the calendar, you need to provide the data in some format, either statically in the JavaScript code or dynamically retrieved from a database or external API.
+-->

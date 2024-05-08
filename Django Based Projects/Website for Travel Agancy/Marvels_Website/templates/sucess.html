@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Page</title>
+    <style>
+        body {
+            font-family: var(--bs-font-sans-serif);
+            background-color: var(--bs-light);
+            color: var(--bs-body-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .success-message h1 {
+            color: var(--bs-orange);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .success-message p {
+            font-size: 1.2rem;
+        }
+
+        .blog-section {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .blog-post {
+            width: 30%;
+            margin: 0 1.5%;
+            background-color: var(--bs-light);
+            border: 1px solid var(--bs-border-color);
+            border-radius: var(--bs-border-radius);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease; /* Added transition for the box-shadow */
+        }
+
+        .blog-post:hover {
+            box-shadow: 0 0 20px var(--bs-orange);
+        }
+
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover img {
+            transform: scale(1.1);
+        }
+
+        .blog-post-content {
+            padding: 10px;
+        }
+
+        .blog-post-title {
+            font-weight: bold;
+            color: var(--bs-dark);
+            transition: text-shadow 0.3s ease; /* Added transition for the text-shadow */
+        }
+
+        .blog-post:hover .blog-post-title {
+            text-shadow: 0 0 10px var(--bs-orange); /* Added glowing text shadow on hover */
+        }
+
+        .blog-post-author {
+            color: var(--bs-secondary);
+            font-style: italic;
+        }
+
+        .blog-post-body {
+            margin-top: 10px;
+            color: var(--bs-gray);
+        }
+
+        a {
+            color: var(--bs-orange);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--bs-warning);
+        }
+
+        @media (max-width: 768px) {
+            .blog-post {
+                width: 45%;
+                margin: 0 2.5%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-post {
+                width: 90%;
+                margin: 0 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-message">
+            <h1>Success!</h1>
+            <p>Your form has been submitted successfully!</p>
+            
+            <p>Find some of our most popular blogs bellow.</p>
+        </div>
+        <div class="blog-section">
+            {% for each_blog in blog_content %}
+            <div class="blog-post">
+                <a href="{% url 'individual_post' each_blog.id %}">
+                    <img src="{% static 'assets/img/globe.jpg' %}" alt="Blog Post Image">
+                    <div class="blog-post-content">
+                        <h2 class="blog-post-title">{{ each_blog.title }}</h2>
+                        {% if each_blog.author %}
+                            <h3 class="blog-post-author">Written by: {{ each_blog.author }}</h3>
+                        {% endif %}
+                        <p class="blog-post-body">{{ each_blog.body|truncatewords:15 }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

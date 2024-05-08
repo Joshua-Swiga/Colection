@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<h2>The room</h2>
+
+<!--Understand what each class and id does.-->
+<main>
+
+    <!--This contains the room name container code-->
+    <section id="room-name-wrapper"> <!--Code for the room name section-->
+        <p>
+            Room name: <span id = "room-name"></span>
+        </p> 
+        <!--The room name is going to be  dinamicly added by Javascript-->
+    </section>
+    <!--Code for the my name section; where users can register their names-->
+    
+    <section id="video-streams" >
+        
+
+    </section>
+    
+</main>
+<script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.20.2.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/streams.js' %}"  > </script>
+{% endblock %}

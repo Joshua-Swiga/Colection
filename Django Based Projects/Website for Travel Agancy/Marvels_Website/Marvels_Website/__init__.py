@@ -1,0 +1,8 @@
+
+Description="The event will take you on a thrilling journey through the heart of the Amazon rainforest, where you'll discover the rich biodiversity and cultural heritage of this magnificent region. From exploring lush jungle trails to encountering rare wildlife species, this adventure promises an unforgettable experience for nature enthusiasts and adventure seekers alike."
+
+Logistics="Our team of experienced guides will lead you through the dense jungle terrain, ensuring your safety and providing valuable insights into the local flora and fauna. Accommodation will be provided in comfortable lodges nestled amidst the trees, offering a unique blend of comfort and immersion in nature. Transportation to and from the starting point will be arranged, making your journey hassle-free and enjoyable"
+
+Prerequisites="Participants should have a moderate level of fitness and be prepared for outdoor activities in a tropical environment. Basic hiking gear, including sturdy shoes, insect repellent, and sunscreen, is recommended. It's also essential to have a sense of adventure and an appreciation for the natural world, as you'll be spending several days exploring remote areas and engaging in outdoor activities."
+
+Details='The cost of the event includes accommodation, meals, transportation, and guided tours throughout the duration of the expedition. Pricing varies depending on the package selected and the duration of the trip, with discounts available for group bookings. A deposit is required to secure your spot, with the remaining balance due prior to departure. Flexible payment options are available to accommodate your budget and travel plans.'
