@@ -1,0 +1,35 @@
+Oral Questions:
+
+1. What is the purpose of using linear regression in data analysis?
+2. Explain the concept of variance and its significance in statistics.
+3. How is the coefficient of determination (R-squared) interpreted in the context of linear regression?
+4. Can you describe the difference between simple linear regression and multiple linear regression?
+5. What are the main steps involved in calculating the coefficient of determination (R-squared)?
+6. How do you interpret the intercept term in a linear regression model?
+7. What are some potential issues that can arise in multiple linear regression, and how can they be addressed?
+8. Explain the role of the `fit()` method in the `LinearRegression()` class from scikit-learn.
+9. How would you handle missing data or outliers in a dataset before performing linear regression?
+10. Describe a situation where you might use linear regression in real-world applications.
+11. Can you explain the concept of multicollinearity in the context of multiple regression?
+12. What is the purpose of using conditional statements (if-else statements) in programming?
+13. How would you use conditional statements to handle different cases in a Python function?
+14. Explain the difference between the `==` operator and the `=` operator in Python.
+15. Describe a scenario where you might use a nested conditional statement in your code.
+
+Practical Test:
+
+You have been provided with a dataset containing information about students' exam scores (dependent variable) and their study hours, previous exam scores, and socioeconomic status (independent variables). Your task is to perform multiple linear regression analysis on this dataset using Python and scikit-learn.
+
+1. Read the dataset from a CSV file into a pandas DataFrame.
+2. Perform exploratory data analysis (EDA) to understand the structure and distribution of the data.
+3. Handle any missing values or outliers in the dataset appropriately.
+4. Split the dataset into training and testing sets.
+5. Create an instance of the `LinearRegression()` class from scikit-learn.
+6. Fit the linear regression model to the training data.
+7. Evaluate the performance of the model using the testing data and calculate the R-squared value.
+8. Interpret the coefficients of the independent variables in the regression model.
+9. Write a function that takes input values for study hours, previous exam scores, and socioeconomic status, and predicts the exam score for a student using the fitted regression model.
+10. Use conditional statements to provide feedback to students based on their predicted exam scores (e.g., "Excellent", "Good", "Satisfactory", "Needs Improvement").
+
+This practical test will assess your ability to perform data analysis, implement linear regression modeling, and integrate conditional statements in Python effectively.
+
