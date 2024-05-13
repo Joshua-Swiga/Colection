@@ -1,23 +1,79 @@
 Oral Questions:
-
 1. What is the purpose of using linear regression in data analysis?
+    Linear analysis is used when we want to identify the directional and proportional relationship that is associated with 
+    an independent and dependent variable. It uses the equation y = mx + c; where y is what we want to read. m is the slope which
+    we get using: change in y over change in x. x is the value that we want to associate y with- what will be the value of 
+    y when x is ... . C is the intercept; the value of y when x is zero. 
+    Linear regression is used to make future predictions using existing and past data.
+    We use the scipy.stats module for this. 
+    Here, we impliment the lineregress() function which takes the x and y array respectively so as to calculate the slope, intercept, p-value
+    and r-value.
+
 2. Explain the concept of variance and its significance in statistics.
-3. How is the coefficient of determination (R-squared) interpreted in the context of linear regression?
+    Variance is a quantified figure that describe the deviation of the values from a standard point of reference; such as mean.
+    It helps us understand the general distribution of the datapouints on the grapgh. 
+    
+3. How is the coefficient of determination (R-squared) interpreted in the context of multiple regression?
+    R-squared is a figure that strives to exlain how well the independent variable influences the dependent variable; it
+    is a value that strived to explain the variability between the x and y
+
+
 4. Can you describe the difference between simple linear regression and multiple linear regression?
+    Multiple regression is used when we have more than one influencing variable. It is when we are trying to understand the relationship
+    between several x values and a y. Simple regression aims to explain the relationship between one independent and one dependent variable.
+    For simple regression, we can cuse the scipy.stats.lineregress() module. Multiple regression uses the sklearn.linear_model.LinearRegression() (which is a module that is dedicated for machine learning operations)
+
+
 5. What are the main steps involved in calculating the coefficient of determination (R-squared)?
+
+
 6. How do you interpret the intercept term in a linear regression model?
-7. What are some potential issues that can arise in multiple linear regression, and how can they be addressed?
+    The intercept term is the value in which the line or regression cuts the y axis (The value of y when x == 0)
+    It is also refered to as the y-intercept.
+
+
+7. What are some potential issues that can arise in multiple and linear regression, and how can they be addressed?
+    1. Coolinearity
+    2. Overfitting
+    3. Underfitting
+    
 8. Explain the role of the `fit()` method in the `LinearRegression()` class from scikit-learn.
+    The fit() function is responsible for calculating the slope of each independent variable with the dependent variable. 
+
+
 9. How would you handle missing data or outliers in a dataset before performing linear regression?
+    We can replace the missing values with the mean, standard deviation, variance or any other statistical value that is related to al the other points
+    within the plot. 
+
+
 10. Describe a situation where you might use linear regression in real-world applications.
+    Linear regression might be useful when we want to make future predictions using historic data. The data should show aspects of linearity: the independent
+    variable should influence the dependent data in a proportional manner. The relationship should be directional. 
+    The relationship can be illusrated using a stright line. 
+
+
 11. Can you explain the concept of multicollinearity in the context of multiple regression?
+
+
 12. What is the purpose of using conditional statements (if-else statements) in programming?
+    These are condtional statements. 
+    It checks whether a statement evaluates to true and then a chain of related opperations take place; based on the truthness of the statement.
+
+
 13. How would you use conditional statements to handle different cases in a Python function?
+    Conditional statements constrol the flow and logic within the code. 
+    It dictates which line of code is going to run and why it is going to run. It a constitional statement is executed,
+    it either evaluates to true or false, and the the operation occures. 
+
 14. Explain the difference between the `==` operator and the `=` operator in Python.
+    '==' is a comparison operotor while '=' is an assignment operator
+
+
 15. Describe a scenario where you might use a nested conditional statement in your code.
+    We use nested conditional statemenst if we have a chain of related events that we would like to tie together. 
+
 
 Practical Test:
-
 You have been provided with a dataset containing information about students' exam scores (dependent variable) and their study hours, previous exam scores, and socioeconomic status (independent variables). Your task is to perform multiple linear regression analysis on this dataset using Python and scikit-learn.
 
 1. Read the dataset from a CSV file into a pandas DataFrame.
