@@ -1,0 +1,114 @@
+Sure, here are 15 oral questions to evaluate your understanding of polynomial regression concepts:
+
+1. Can you explain what polynomial regression is and how it differs from linear regression?
+    Polynomial regression is a statistical approach that aims to identify the non-linear relationship that is associated between one dependent and independent variable. Contrary to linear regression (whose relationship can be demonstrated using a stright line), polinomial regression uses a curve so as to identify the trend that is associated with the datapoints. 
+
+2. What is the purpose of polynomial regression in data analysis?
+    Polynomial regression is used when we are dealing with datasets that do not exhibit trends on linearity when ploted. Its model uses degree of power; which is determined by the nature of the graph. 
+
+3. How do you choose the degree of the polynomial in polynomial regression?
+    Degree of power is subject to the nature of the graph. It should be choosen after visualizing the relationship and understanding the trends and number of points that are associated with the plots. 
+
+4. Explain the concept of overfitting in polynomial regression and how it can be addressed.
+    Overfiting occures when the model is too specific to the training datasets. In polynomial regression, overfitting occures when the degree of power is too high. This fources the line to try and fit each individual point on the graph. While this may be ideal for very similar datasets, the model will underperform when exposed to new and different data. 
+
+5. What are some common evaluation metrics used to assess the performance of polynomial regression models?
+    r - The 'r' value is used to explain the strength and direction of the relationship. Values that are close to 1 indicate strong possitive direction, -1 strong negative relationship, and 0 inicates that there is not relationship between the datasets
+
+    r-squared - This is the square of r (r**2). It quantifies the level to which the independent variable is responsible for the variability expereinced by the dependent variable (To what level is the independent variable repsonsible for the distribution of the points?). Values that are close to 1 work in favour of the datasets. 
+    
+    Adjusted-r
+
+    p-value - The p-value assumes that the null hypothesis is true; which assumes that there is no linear relationship between the points. A value that is close to 0.05 shows that there is evidence against the null hytothesis. A p-value that is close to 1 indicates that there is little evidence to reject the null hypothesis
+
+    Mean Squared of Errors (MSE) - This finds the deviation that is associated with the predicted values and the existing values. It is the square of the summation obtained from (y - (m.x + c)). A low MSE typically indicates that the model is good; as it indicates that the deviation is small
+
+    Root Mean Squared of Errors - This is the squareroot of the MSE. It is also a metric that is used to evaluate the efficiency of the model. 
+    
+    Residuals - These are the deviations from each dependent value and the predicted value. They show how far they have deviated. 
+
+    Variance - Variance indicates the deviation of a value from a standard point of measure; which is often the mean: by how much does a value deviate from the mean. 
+
+
+6. How is the sum of squared errors (SSE) calculated in polynomial regression?
+    covarience (x, y)/variance (x)
+
+7. Describe the process of fitting a polynomial regression model to a dataset using the method of least squares.
+    Sum((x1 - x-mean)(y1 - y_mean)) ** 2
+
+8. What is the significance of the coefficients in a polynomial regression equation?
+    The coefficents calculated with polynomial regression analysis include:
+        1. slopes based on degree specified
+        2. intercept value - which is the state of y when x = 0
+
+    The slope/gradient explains the rate of change in y per unit change in x-how much does y change when x changes
+
+    The intercept is the value of y when x is 0, which is added to the rate of change calcuated using the least mean method: covarience(x, y)/variance(x)
+
+
+9. Can you explain the concept of multicollinearity and its implications in polynomial regression?
+    (How does polynomial regression have multicolinearity)
+
+10. How do you interpret the R^2 value in the context of polynomial regression?
+    This is a metric that quantifies how much the predictor variable influences the response variable in terms on variability. A high r-squared value indicates that much of the distribution of the points are influenced by the independent variable. A low shows that there is a chance that the distribution is being influenced by other factors. Therefore, values close to 1 (which is high, work in favour of the predictive model.)
+
+11. Explain the difference between mean squared error (MSE) and root mean squared error (RMSE) in the context of evaluating polynomial regression models.
+
+
+12. What are some common techniques for feature selection or dimensionality reduction in polynomial regression?
+    (Read on this)
+
+
+13. How do you handle missing data or outliers in a dataset before performing polynomial regression?
+    Outlires and missing datapoints can be replaced using statistical-gotten values such as mean, mode, median. This will help ballance the datasets and prevent missing enstries. 
+
+14. Can you describe a real-world scenario where polynomial regression would be an appropriate modeling technique?
+    A polynomial chart describes the nonlinear trend that is associated with the numbers. Therefore, the model can be used to predict future trends for values that are nonlinear; those that exhibit curve-like structures. The model's forumalr is:
+
+        y = m1*x^1 + m2*x^2 + ... +mn*x^n + c, where n is the degree
+    
+    The stock market charts often exhibit non-linear trends. This model night be used in such scenario. 
+
+
+15. How would you interpret the results of a polynomial regression analysis to make actionable recommendations or predictions?
+    (read more on this)
+
+And here's a project-based question along with the dataset and objective:
+
+### Project-Based Question:
+
+**Objective**: 
+You are tasked with building a polynomial regression model to predict housing prices based on various features. The dataset provided contains information about housing prices and relevant features such as square footage, number of bedrooms, number of bathrooms, etc.
+
+**Dataset**: 
+You are provided with a CSV file named "housing_data.csv" containing the following columns:
+- `Price`: The selling price of the house (dependent variable).
+
+- `Square_Footage`: The square footage of the house.
+- `Bedrooms`: The number of bedrooms in the house.
+- `Bathrooms`: The number of bathrooms in the house.
+- `Year_Built`: The year the house was built.
+- `Lot_Size`: The size of the lot in square feet.
+- `Garage_Size`: The size of the garage in square feet.
+- `Neighborhood`: The neighborhood where the house is located (categorical).
+
+**Task**:
+1. Load the dataset and perform exploratory data analysis (EDA) to understand the distribution of variables, identify missing values, and explore relationships between features and the target variable.
+
+2. Preprocess the data by handling missing values, encoding categorical variables (if any), and scaling numerical features if necessary.
+
+3. Split the data into training and testing sets.
+
+4. Build polynomial regression models with different degrees (e.g., linear, quadratic, cubic) using the training data.
+
+5. Evaluate the performance of each model using appropriate evaluation metrics such as MSE, RMSE, and \( R^2 \) on the testing data.
+
+6. Select the best-performing model and visualize the predicted housing prices against the actual prices.
+
+7. Interpret the results and provide recommendations based on the insights gained from the model.
+
+**Additional Notes**:
+- You can use Python and libraries like pandas, NumPy, scikit-learn, and matplotlib/seaborn for data analysis, modeling, and visualization.
+- Make sure to document your code and provide clear explanations of your approach and findings in a report or presentation format.
+
+Feel free to modify the project objective or dataset based on your preferences or specific interests!
