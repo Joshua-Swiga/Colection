@@ -90,6 +90,7 @@ You are provided with a CSV file named "housing_data.csv" containing the followi
 - `Year_Built`: The year the house was built.
 - `Lot_Size`: The size of the lot in square feet.
 - `Garage_Size`: The size of the garage in square feet.
+
 - `Neighborhood`: The neighborhood where the house is located (categorical).
 
 **Task**:
